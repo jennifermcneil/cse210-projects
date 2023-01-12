@@ -9,11 +9,15 @@ class Program
         string userName = PromptUserName();
         int userNumber = PromptUserNumber();
 
-        int squaredNumber = squaredNumber(userNumber);
+        int squaredNumber = SquareNumber(userNumber);
 
         DisplayResult(userName, squaredNumber);
     }
     static void DisplayWelcomeMessage()
+    {
+        Console.WriteLine("Welcome to the program!");
+    }
+    static string PromptUserName()
     {
         Console.Write("Please enter your name: ");
         string name = Console.ReadLine();
