@@ -1,0 +1,14 @@
+Scripture-
+Its responsible for keeping track of the scripture reference and verse
+It’s going to manage hiding the different words in the text  
+Ask User to which verse the user wants to memorize and setting that verse in the reference class
+
+Reference-
+Keeping track of chapter, book, and verse
+Getting access to that information
+Responsible for handling the difference between single verses and multiple verses and setting them
+
+Word-
+Keeping track of a word 
+Provides functionality to show and hide the word
+Let’s us know if a word is shown or hidden.
