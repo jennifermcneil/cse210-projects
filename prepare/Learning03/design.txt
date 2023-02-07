@@ -3,6 +3,7 @@ Classes
     Scripture
     Reference
     Word
+    
 Define Class Behaviors
     Scripture-
         *Its responsible for keeping track of the scripture reference and verse
