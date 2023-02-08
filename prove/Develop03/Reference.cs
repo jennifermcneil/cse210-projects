@@ -5,6 +5,8 @@ public class Reference
     public string _verseText;
     public List<string> _listVerse = new List<string>();
 
+
+
     //constructors (no void, int, or bool)
     public Reference()
     {
