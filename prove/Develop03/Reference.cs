@@ -2,42 +2,34 @@ public class Reference
 {
     public string _book;
     public string _chapter;
-    public string _verseText;
-    public List<string> _listVerse = new List<string>();
+    public string _startVerse;
+    public string _endVerse;
+    public string _referenceText;
 
 
 
     //constructors (no void, int, or bool)
-    public Reference()
+    public Reference(string book, string chapter, string startVerse)
     {
-
-    }
-    public Reference(string book, string chapter, string verse1, List<string> verseText)
-    {
-
-    }
-
-    public Reference(string book, string chapter, string verse1, string verse2, List<string> verseText)
-    {
-
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = null;
+        _referenceText = ($"{book} {chapter}:{startVerse}");
     }
 
-    public string GetBook()
+    public Reference(string book, string chapter, string startVerse, string endVerse)
     {
-        return "John";
+        _book = book;
+        _chapter = chapter;
+        _startVerse = startVerse;
+        _endVerse = endVerse;
+        _referenceText = ($"{book} {chapter}:{startVerse}-{endVerse}");
     }
 
-    public string GetChapter()
+    public string GetReferenceText()
     {
-        return "16";
-    }
-    public string GetVerseText()
-    {
-        return "asdgadfg";
-    }
-    public void SetVerseText(int index)
-    {
-
+        return _referenceText;
     }
 
 }

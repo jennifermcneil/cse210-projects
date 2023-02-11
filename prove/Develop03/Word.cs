@@ -1,29 +1,39 @@
 public class Word
 {
-    public string _word;
-    public bool _visible;
+    private string _word;
+    private bool _visible;
 
 
     //constructor
     public Word(string text)
     {
-
+        _word = text;
+        _visible = true;
     }
     public void Show()
     {
-
+        Console.WriteLine(_word);
     }
     public void Hide()
     {
-
+        foreach (char _letter in _word)
+        {
+            Console.WriteLine("_");
+        }
     }
-    public string GetRenderedText()
+
+    public string GetWord()
     {
-        return "zxcv";
+        return _word;
     }
 
-    public bool IsHidden()
+    public bool GetVisible()
     {
-        return true;
+        return _visible;
+    }
+
+    public void SetVisible(bool visible)
+    {
+        _visible = visible;
     }
 }
