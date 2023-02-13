@@ -29,33 +29,83 @@ public class Scripture
     {
         foreach (Word word in _wordList)
         {
-            Console.WriteLine(word.GetWord());
+            if (word.GetVisible() == false)
+            {
+
+                word.Hide();
+            }
+            else
+                word.Show();
+
+
+            Console.Write(" ");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine();
+    }
+
+    public List<Word> StillShown()
+    {
+        List<Word> _wordsLeft = new List<Word>();
+        foreach (Word word in _wordList)
+        {
+            if (word.GetVisible() == true)
+            {
+                _wordsLeft.Add(word);
+            }
+        }
+
+        return _wordsLeft;
+    }
+
+    public bool DisplayNPrompt()
+    {
+        Console.Write(_reference.GetReferenceText());
+        DisplayText();
+        Console.Write("Press enter to continue or type quit to end: ");
+        string userInput = Console.ReadLine();
+
+        if (userInput.ToLower() == "quit")
+        {
+            return true;
+        }
+        else
+        {
+            Console.Clear();
+            return false;
         }
 
     }
-    public bool CompletelyHidden()
-    {
-        return true;
-    }
+
 
     public void HideWords()
     {
         Random random = new Random();
-        // select three random words the verse and hide them until all the words in the scripture are hidden
-        // display entire scripture
-        // While loop with counter ( while(*variable* < 3)  )
-        while ((< 3))
+
+        if (DisplayNPrompt())
+            System.Environment.Exit(0);
+
+        while (true)
+        {
+            List<Word> _wordsLeft = StillShown();
+            if (_wordsLeft.Count() == 0)
+            {
+                break;
+            }
+
+
             for (int i = 0; i < 3; i++)
             {
-                // IF check if the the word is already hidden (use your getter to check the status of visible)
-                // If it is NOT hidden then we set it to hidden;
-                _wordList[random.Next(_wordList.Count())].SetVisible(false);
-                // Incriment the counter
-
+                int randomIndex = random.Next(_wordsLeft.Count());
+                _wordsLeft[randomIndex].SetVisible(false);
 
             }
+
+            if (DisplayNPrompt())
+                break;
+
+        }
     }
-
-
 }
 

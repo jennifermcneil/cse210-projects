@@ -12,13 +12,13 @@ public class Word
     }
     public void Show()
     {
-        Console.WriteLine(_word);
+        Console.Write(_word);
     }
     public void Hide()
     {
         foreach (char _letter in _word)
         {
-            Console.WriteLine("_");
+            Console.Write("_");
         }
     }
 
