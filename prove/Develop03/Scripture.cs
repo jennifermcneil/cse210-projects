@@ -62,6 +62,7 @@ public class Scripture
     public bool DisplayNPrompt()
     {
         Console.Write(_reference.GetReferenceText());
+        Console.Clear();
         DisplayText();
         Console.Write("Press enter to continue or type quit to end: ");
         string userInput = Console.ReadLine();
