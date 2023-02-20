@@ -13,7 +13,7 @@ public class Activity
         _activity = activity;
         _description = description;
         _startMessage = $"Welcome to the {activity} Activity. {description}";
-        _endMessage = $"put message";
+        _endMessage = "Great Job!";
         SetStartTime();
         SetFutureTime();
 
@@ -25,9 +25,9 @@ public class Activity
         Console.WriteLine($"Get ready...");
     }
 
-    public string ShowEndMessage()
+    public void ShowEndMessage()
     {
-        return "Thank you";
+        Console.WriteLine($"{_endMessage}\n");
     }
     public void SetDuration(int duration)
     {
@@ -56,20 +56,15 @@ public class Activity
 
     public void PauseWithSpinner()
     {
-        Console.WriteLine("Going to sleep for a second...");
+        List<char> spinner = new List<char>();
         for (int i = 0; i < 5; i++)
         {
             Console.Write(">");
-
             Thread.Sleep(500);
-
             Console.Write("\b \b"); // Erase the + character
             Console.Write("-"); // Replace it with the - character
         }
-
-        Thread.Sleep(1000);
-
-        Console.WriteLine("I'm back!!");
+        Console.WriteLine();
 
     }
     public void PausewithTimer(int timer)
@@ -78,11 +73,12 @@ public class Activity
         {
             Console.Write(timer);
             timer = timer - 1;
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
 
             Console.Write("\b \b"); // Erase the + character
 
         }
+        Console.WriteLine();
     }
 }
 
