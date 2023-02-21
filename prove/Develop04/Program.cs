@@ -18,7 +18,7 @@ class Program
             switch (userInput)
             {
                 case "1":
-                    BreathingActivity breathingObject = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
+                    BreathingActivity breathingObject = new BreathingActivity("Breathing Activity", "\n\nThis activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     breathingObject.SetDuration(int.Parse(Console.ReadLine()));
                     breathingObject.ShowStartMessage();
@@ -28,7 +28,7 @@ class Program
                     break;
 
                 case "2":
-                    ReflectionActivity reflectionObject = new ReflectionActivity("Reflection Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+                    ReflectionActivity reflectionObject = new ReflectionActivity("Reflection Activity", "\n\nThis activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     reflectionObject.SetDuration(int.Parse(Console.ReadLine()));
                     reflectionObject.ShowStartMessage();
@@ -38,13 +38,14 @@ class Program
                     break;
 
                 case "3":
-                    ListingActivity listingObject = new ListingActivity("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+                    ListingActivity listingObject = new ListingActivity("Listing Activity", "\n\nThis activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
                     listingObject.ShowStartMessage();
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     listingObject.SetDuration(int.Parse(Console.ReadLine()));
                     listingObject.ShowStartMessage();
                     listingObject.PauseWithSpinner(5);
                     listingObject.Listing();
+                    listingObject.DisplayCounter();
                     listingObject.ShowEndMessage();
                     break;
 
