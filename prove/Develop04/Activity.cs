@@ -12,8 +12,8 @@ public class Activity
     {
         _activity = activity;
         _description = description;
-        _startMessage = $"Welcome to the {activity} Activity. {description}";
-        //// can't get the correct duration to show up
+        _startMessage = $"\nWelcome to the {activity}. {description}";
+
         SetStartTime();
         SetFutureTime();
 
@@ -22,6 +22,8 @@ public class Activity
     public void ShowStartMessage()
     {
         Console.WriteLine(_startMessage);
+        Console.WriteLine("\nHow long, in seconds, would you like for your session?");
+        SetDuration(int.Parse(Console.ReadLine()));
         Console.WriteLine($"Get ready...");
     }
 
