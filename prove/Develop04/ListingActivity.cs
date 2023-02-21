@@ -19,6 +19,12 @@ public class ListingActivity : Activity
     {
         return "";
     }
+
+    public void Listing()
+    {
+        Console.Write("List as many responses you can to the follwing prompt: --{prompt}--\n You may begin:\n >()seconds");
+
+    }
     // The activity should begin with the standard starting message and prompt for the duration that is used by all activities.
     // The description of this activity should be something like: "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area." List as many responses you can to the following prompt.
     // After the starting message, select a random prompt to show the user such as:

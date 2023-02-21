@@ -2,6 +2,7 @@ public class ReflectionActivity : Activity
 {
     private List<string> _promptList;
     private List<string> _reflectList;
+    private Random _random = new Random();
     // List<> list = new List<>();
     public ReflectionActivity(string activity, string description) : base(activity, description)
     {
@@ -32,21 +33,58 @@ public class ReflectionActivity : Activity
     }
     public string GetRandomPrompt()
     {
-        return "random prompt";
+        Random rnd = new Random();
+        // Create an index attribute (variable) to store the random int
+        // Call the rnd.Next( _promptList.Count() ) method inside of the rnd object and store it inside of the index attribute
+        int index = rnd.Next(_promptList.Count());
+        _duration -= 10;
+        return _promptList[index];
     }
     public string GetRandomQuestion()
     {
-        return "";
+        Random rnd = new Random();
+        int index = rnd.Next(_reflectList.Count());
+        _duration -= 10;
+        return _reflectList[index];
+
     }
+    //Method (Access Type) (Return Type) (Name)
+    public void Reflect()
+    {
+        //     GetRandomPrompt()
+        foreach (string prompt in _promptList)
+        {
 
-    //
-    //     DisplayPrompt();
-    // DisplayQuestions()
-    //     public string GetAnswers()
-    //     {
+            Console.WriteLine(prompt);
 
-    //     }
+            Console.WriteLine("When you have something in mind, press enter to continue:");
+            string userInput = Console.ReadLine();
+            if (userInput == "")
+            {
+                // GetRandomRQuestion()
+                foreach (string reflect in _reflectList)
+                {
+                    Console.WriteLine(reflect);
+                    //      Use timer
+                    PausewithTimer(10);
+                    Console.ReadLine();
+                    // how do I make sure that it goes through the whole list before duplicating a question?
+                }
+            }
 
+            //     while loop (run this loop while duration is greater than 0)
+            while (_duration > 0)
+            {
+                GetRandomQuestion();
+                //   add timer for reflecting (ex. pause for 10)
+                PausewithTimer(10);
+                Console.WriteLine();
+                // decriment duration (ex -= 10)
+                _duration -= 10;
+            }
+        }
+
+    }
 }
 //  The activity should begin with the standard starting message and prompt for the duration that is used by all activities.
 // The description of this activity should be something like: "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life."
