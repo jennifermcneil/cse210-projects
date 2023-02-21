@@ -22,7 +22,7 @@ class Program
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     breathingObject.SetDuration(int.Parse(Console.ReadLine()));
                     breathingObject.ShowStartMessage();
-                    breathingObject.PauseWithSpinner();
+                    breathingObject.PauseWithSpinner(5);
                     breathingObject.Breathe();
                     breathingObject.ShowEndMessage();
                     break;
@@ -32,7 +32,7 @@ class Program
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     reflectionObject.SetDuration(int.Parse(Console.ReadLine()));
                     reflectionObject.ShowStartMessage();
-                    reflectionObject.PauseWithSpinner();
+                    reflectionObject.PauseWithSpinner(5);
                     reflectionObject.Reflect();
                     reflectionObject.ShowEndMessage();
                     break;
@@ -43,7 +43,7 @@ class Program
                     Console.WriteLine("How long, in seconds, would you like for your session?");
                     listingObject.SetDuration(int.Parse(Console.ReadLine()));
                     listingObject.ShowStartMessage();
-                    listingObject.PauseWithSpinner();
+                    listingObject.PauseWithSpinner(5);
                     listingObject.Listing();
                     listingObject.ShowEndMessage();
                     break;

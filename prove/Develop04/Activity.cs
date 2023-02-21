@@ -13,7 +13,7 @@ public class Activity
         _activity = activity;
         _description = description;
         _startMessage = $"Welcome to the {activity} Activity. {description}";
-        _endMessage = "Great Job!";
+        //// can't get the correct duration to show up
         SetStartTime();
         SetFutureTime();
 
@@ -25,14 +25,16 @@ public class Activity
         Console.WriteLine($"Get ready...");
     }
 
+    public void SetDuration(int duration)
+    {
+        _duration = duration;
+        _endMessage = $"Great Job! \nYou have completed {_duration} seconds of the {_activity}.\n";
+    }
     public void ShowEndMessage()
     {
         Console.WriteLine($"{_endMessage}\n");
     }
-    public void SetDuration(int duration)
-    {
-        _duration = duration;
-    }
+
 
     public DateTime GetStartTime()
     {
@@ -54,10 +56,10 @@ public class Activity
         _futureTime = _startTime.AddSeconds(5000);
     }
 
-    public void PauseWithSpinner()
+    public void PauseWithSpinner(int spins)
     {
-        List<char> spinner = new List<char>();
-        for (int i = 0; i < 5; i++)
+        //List<char> spinner = new List<char>();
+        for (int i = 0; i < spins; i++)
         {
             Console.Write(">");
             Thread.Sleep(500);
@@ -74,7 +76,6 @@ public class Activity
             Console.Write(timer);
             timer = timer - 1;
             Thread.Sleep(1000);
-
             Console.Write("\b \b"); // Erase the + character
 
         }
