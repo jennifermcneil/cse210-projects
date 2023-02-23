@@ -30,11 +30,15 @@ public class Activity
     public void SetDuration(int duration)
     {
         _duration = duration;
-        _endMessage = $"Great Job! \nYou have completed {_duration} seconds of the {_activity}.\n";
+        _endMessage = $"Great Job! \nYou have completed {_duration} seconds of the {_activity}.\nPress enter to return to the menu.";
+
+
     }
     public void ShowEndMessage()
     {
         Console.WriteLine($"{_endMessage}\n");
+        Console.ReadLine();
+        Console.Clear();
     }
 
 

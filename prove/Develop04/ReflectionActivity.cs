@@ -2,7 +2,7 @@ public class ReflectionActivity : Activity
 {
     private List<string> _promptList;
     private List<string> _reflectList;
-    private List<string> _questions;
+
     private Random _random = new Random();
     // List<> list = new List<>();
     public ReflectionActivity(string activity, string description) : base(activity, description)
@@ -29,8 +29,6 @@ public class ReflectionActivity : Activity
             "What did you learn about yourself through this experience?",
             "How can you keep this experience in mind in the future?"
             };
-
-
     }
     public void GetRandomPrompt()
     {
@@ -40,13 +38,23 @@ public class ReflectionActivity : Activity
         int index = rnd.Next(_promptList.Count());
         Console.WriteLine(_promptList[index]);
     }
-    public void GetRandomQuestion()
+    public int GetRandomQuestion(List<int> usedReflections)
     {
         Random rnd = new Random();
-        int index = rnd.Next(_questions.Count());
-        _duration -= 10;
-        Console.WriteLine(_questions[index]);
-        _questions.Remove(_questions[index]);
+
+        int index = rnd.Next(_reflectList.Count());
+        for (int i = 0; i < usedReflections.Count; i++)
+        {
+            if (usedReflections[i] == index)
+            {
+                index = rnd.Next(_reflectList.Count());
+                i = 0;
+
+            }
+
+        }
+        Console.WriteLine(_reflectList[index]);
+        return index;
 
     }
     //Method (Access Type) (Return Type) (Name)
@@ -66,16 +74,23 @@ public class ReflectionActivity : Activity
 
 
         //     while loop (run this loop while duration is greater than 0)
-        _questions = _reflectList;
+
         int duration = _duration;
+        List<int> usedReflections = new List<int>();
+
         while (duration > 0)
         {
-            GetRandomQuestion();
+            if (usedReflections.Count == _reflectList.Count)
+            {
+                usedReflections.Clear();
+            }
+            usedReflections.Add(GetRandomQuestion(usedReflections));
+
             //   add timer for reflecting (ex. pause for 10)
             PauseWithSpinner(20);
             Console.WriteLine();
             // decriment duration (ex -= 10)
-            duration -= 10;
+            duration -= 20;
         }
     }
 }
