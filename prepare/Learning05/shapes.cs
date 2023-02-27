@@ -25,5 +25,8 @@ class Shapes
     //     double _area = 0;
     //     return _area;
     // }
-    public abstract double GetArea();
+    public virtual double GetArea()
+    {
+        return 0;
+    }
 }

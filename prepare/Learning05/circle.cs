@@ -10,7 +10,7 @@ class Circle : Shapes
 
     public override double GetArea()
     {
-        return _radius = _radius * Math.PI;
+        return _radius * _radius * Math.PI;
     }
     // public int GetArea(string color, double radius)
     // {
