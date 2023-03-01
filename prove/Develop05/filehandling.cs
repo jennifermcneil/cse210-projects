@@ -5,4 +5,9 @@ public class Filehandling
     {
 
     }
+
+    public void LoadFile()
+    {
+
+    }
 }

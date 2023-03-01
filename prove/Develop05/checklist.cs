@@ -1,14 +1,28 @@
 using System;
-public class Checklist
-
+public class Checklist : Goal
 {
-    private string _timesCompleted;
-    public Checklist(string name, string description)
+    private int _timesCompleted;
+    private int _targetCompleted;
+
+    public Checklist(string name, string description, int points, int check, int bonus) : base(name, description, points)
+    {
+        // targetCompleted = *target parameter*
+    }
+
+    public override void RecordEvent()
     {
 
     }
-    public void RecordEvents()
+
+    public override void IsComplete()
     {
 
     }
+
+    public override string GetTimesCompleted()
+    {
+        return $" -- Completed {_timesCompleted} / target ";
+    }
+
 }
+

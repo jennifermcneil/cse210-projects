@@ -1,12 +1,19 @@
 using System;
-public class Eternal
+public class Eternal : Goal
 {
-    public Eternal(string name, string description)
+    protected int _bonusPoints;
+    public Eternal(string name, string description, int points) : base(name, description, points)
     {
 
     }
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
+
+    public override void IsComplete()
+    {
+
+    }
+
 }

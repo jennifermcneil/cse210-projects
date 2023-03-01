@@ -3,23 +3,44 @@ public class Goal
 {
     protected string _name;
     protected string _description;
-
-    protected string _pointsAwarded;
-    protected string _bonusPoints;
+    protected int _pointsAwarded;
     protected bool _completed;
 
-    public Goal(string name, string description)
+    public Goal(string name, string description, int points)
+    {
+        _name = name;
+        _description = description;
+        _pointsAwarded = points;
+        _completed = false;
+    }
+
+    public virtual void RecordEvent()
     {
 
     }
 
-    public void RecordEvent()
+    public virtual void IsComplete()
     {
 
     }
 
-    public void IsComplete()
+    public string GetName()
     {
-
+        return _name;
     }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public char GetIsComplete()
+    {
+        if (_completed)
+            return 'X';
+        else
+            return ' ';
+    }
+
+    public virtual string GetTimesCompleted() { return null; }
 }

@@ -4,99 +4,25 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Goal> userGoals = new List<Goal>();
-        bool Quit = false;
-        while (Quit == false)
-        {
-            //place the points here
-            Console.WriteLine("You have 0 points!\n");
-            Console.WriteLine("Welcome select from \n Menu Options: \n 1. Create New Goal \n 2. List Goals \n 3. Save Goals \n 4. Load Goals \n  5. Record Event \n 6. Quit \nSelect a choice from the menu:");
-            string userInput = Console.ReadLine();
+        string userName;
+        Console.WriteLine("Enter your name: ");
+        userName = Console.ReadLine();
+        EternalQuest eternalQuest = new EternalQuest(userName);
+        eternalQuest.Menu();
 
-            switch (userInput)
-            {
-                case "1":
-                    userGoals.Add(NewGoal());
-                    break;
-                case "2":
-                    Console.WriteLine("The goals are: ");
-                    foreach (Goal goal in userGoals)
-                    {
-                        goal.displayGoal();
-                    }
-                    break;
-                case "3":
-                    Console.WriteLine("What is the file name for your goal file?");
-                    Filehandling fileSave = new Filehandling(Console.ReadLine());
-                    fileSave.saveGoals(userGoals);
-                    break;
-                case "4":
-                    Console.WriteLine("What is the file name for your goal file?");
-                    Filehandling fileLoad = new Filehandling(Console.ReadLine());
-                    userGoals.AddRange(fileLoad.loadGoals());
-                    break;
-                case "5":
-                    Console.WriteLine("The goals are: ");
-                    foreach (Goal goal in userGoals)
-                    {
-                        goal.displayGoal();
-                    }
-                    Console.WriteLine("What goals did you accomplish?");
-                    int userChoice = int.Parse(Console.ReadLine());
-                    userGoals[userChoice - 1].RecordEvent();
-                    break;
-                case "6":
-                    Quit = true;
-                    break;
-            }
-        }
-    }
-    static Goal NewGoal()
-    {
-        string goalName;
-        string goalDesc;
-        string goalPoints;
-
-        Console.WriteLine("The types of Goals are: \nMenu Options: \n1. Simple Goal \n 2. Eternal Goal\n 3. Checklist Goal \nWhich type of Goal would you like to create?");
-        string userInput = Console.ReadLine();
-        switch (userInput)
-        {
-            case "1":
-                Console.Write("What is the name of your Goal?\n");
-                goalName = Console.ReadLine();
-                Console.Write("Write a short description of your goal.\n");
-                goalDesc = Console.ReadLine();
-                Console.Write("What is the amount of points associated with this goal?\n");
-                goalPoints = Console.ReadLine();
-                Simple simple = new Simple(goalName, goalDesc, goalPoints);
-                return simple;
-                break;
-
-            case "2":
-                Console.Write("What is the name of your Goal?\n");
-                goalName = Console.ReadLine();
-                Console.Write("Write a short description of your goal.\n");
-                goalDesc = Console.ReadLine();
-                Console.Write("What is the amount of points associated with this goal?\n");
-                goalPoints = Console.ReadLine();
-                Eternal eternal = new Eternal(goalName, goalDesc, goalPoints);
-                return eternal;
-                break;
-
-            case "3":
-                Console.Write("What is the name of your Goal?\n");
-                goalName = Console.ReadLine();
-                Console.Write("Write a short description of your goal.\n");
-                goalDesc = Console.ReadLine();
-                Console.Write("What is the amount of points associated with this goal?\n");
-                goalPoints = Console.ReadLine();
-                Console.Write("How many times does this goal need to be accomplished for a bonus?\n");
-                string goalChecks = Console.ReadLine();
-                Console.Write("What is the bonus for accomplishing it that many times?\n");
-                string goalBonus = Console.ReadLine();
-                Checklist checklist = new Checklist(goalName, goalDesc, goalPoints, goalChecks, goalBonus, "0");
-                return checklist;
-                break;
-        }
     }
 }
+//For the Develop04 assignment, there are a couple things I want you to be aware of:
+
+// You need to use polymorphism on this assignment.  (Hint on how to do this is below)
+// In my opinion, the assignment is not particularly hard, but there is a lot of code that needs to be written.  Give yourself time to write it.
+// Don't forget to test small pieces as you go.  I suggest that you start with the polymorphism piece and then add functions to each of the child classes as you go.  Write the same class for all the child classes and then test that function for everyone to make sure you get the expected polymorphic behavior.  The last thing you want is to write three classes and then realize you never did any polymorphism and you have to change everything.
+// Polymorphism Hint
+// For polymorphism, C# will not allow you to make a list of things with many different types.  However, you can make a list of a base class type and have that list hold objects of child class types.  So if I have a base class BaseClass and child classes A, B, and C, I can do the following:
+
+// List<BaseClass> myObjectList = new List<BaseClass>();
+// myObjectList.Add(new A());
+// myObjectList.Add(new B());
+// myObjectList.Add(new C());
+
+// However, you won't be able to simply access any specialized attributes or methods of the child classes that are not defined by the base class.  The compiler can't be certain that those things exist if they are not part of the base class.  Why is this useful?  Because the way that classes work, when you override a function, that information is put in something called a virtual method table.  So suppose that the BaseClass has a method Foo() and A, B, and C all override Foo.  This means that if you do myObjectList[0].Foo(), you will get A's version of Foo that will use the data in the A-type object at index 0.  If you do myObjectList[1].Foo(), you will get B's version of Foo using the data in the B-type object at index 1.  If you do myObjectList[2].Foo(), you will get C's version of Foo using the data in the C-type object at index 2.

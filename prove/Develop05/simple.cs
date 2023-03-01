@@ -1,13 +1,19 @@
 using System;
-public class Simple
+public class Simple : Goal
 {
-    public Simple(string name, string description)
+    public Simple(string name, string description, int points) : base(name, description, points)
     {
 
     }
 
-    public void RecordEvent()
+    public override void RecordEvent()
     {
 
     }
+
+    public override void IsComplete()
+    {
+
+    }
+
 }
