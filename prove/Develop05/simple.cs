@@ -8,20 +8,9 @@ public class Simple : Goal
 
     public override int RecordEvent()
     {
-        // add points to total points
-        totalPoints += _pointsAwarded;
-        // check for bonus requirments
-        if (totalPoints >= 100)
-        {
-            totalPoints += 50; //Award bonus points
-        }
-        //      if met award bonus points
-        // set to complete
-        IsComplete = true;
-        // display message
-        Console.WriteLine($"Goal '{goalName}' is complete! You earned {totalPoints} points.");
-
-        TotalPointsEarned = totalPoints;
+        Console.WriteLine($"Goal '{_name}' is complete! You earned {_pointsAwarded} points.");
+        _completed = true;
+        return _pointsAwarded;
     }
 
 }

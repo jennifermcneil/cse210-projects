@@ -8,7 +8,7 @@ public class Checklist : Goal
 
     public Checklist(string name, string description, int points, int target, int bonus, int frequency) : base(name, description, points)
     {
-        // targetCompleted = *target parameter*
+        _timesCompleted = 0;
         _targetCompleted = target;
         _bonus = bonus;
     }
@@ -16,37 +16,25 @@ public class Checklist : Goal
     public override int RecordEvent()
     {
 
-        Console.WriteLine($"How many timed did you complete {base._name}?");
+        Console.WriteLine($"How many timed did you complete {_name}?");
         int completed = int.Parse(Console.ReadLine());
+        _timesCompleted += completed;
 
         // if they met the target amount award bonus other wise award points based off times completed
-        if (completed >= _targetCompleted)
+        if (_timesCompleted >= _targetCompleted)
         {
             // add points to total points
             _pointsAwarded += _bonus;
-            Console.WriteLine($"Congratulations! You completed {base._name} and earned {base._pointsAwarded} points.");
+            Console.WriteLine($"Congratulations! You completed {_name} and earned {_pointsAwarded * _timesCompleted + _bonus} points.");
+            _completed = true;
         }
         else
         {
-            Console.WriteLine($"You completed {base._name} {completed} times and earned {base._pointsAwarded * completed} points.");
+            Console.WriteLine($"You completed {_name} {_timesCompleted} times and earned {_pointsAwarded * _timesCompleted} points.");
 
         }
 
-
-
-        // // check for milestone requirments
-        // CheckMilestone(totalPoints);
-
-        // if (completed >= _targetCompleted)
-        // {
-        //     SetComplete();
-        // }
-
-        // //      if met award bonus points
-        // // if they met target
-        // //      set to complete
-        // // display message
-        return _pointsAwarded;
+        return _pointsAwarded * completed;
     }
 
     public override string GetTimesCompleted()
