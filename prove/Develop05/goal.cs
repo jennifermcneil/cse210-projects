@@ -14,14 +14,14 @@ public class Goal
         _completed = false;
     }
 
-    public virtual void RecordEvent()
+    public virtual int RecordEvent()
     {
-
+        return _pointsAwarded;
     }
 
-    public virtual void IsComplete()
+    public bool IsComplete()
     {
-
+        return _completed;
     }
 
     public string GetName()

@@ -1,19 +1,17 @@
 using System;
 public class Eternal : Goal
 {
-    protected int _bonusPoints;
     public Eternal(string name, string description, int points) : base(name, description, points)
     {
 
     }
-    public override void RecordEvent()
+    public override int RecordEvent()
     {
-
-    }
-
-    public override void IsComplete()
-    {
-
+        // Ask if the user completed the goal
+        // Award points
+        // Check if they met milestone
+        // display message
+        return _pointsAwarded;
     }
 
 }
