@@ -8,9 +8,14 @@ public class Filehandling
     {
         List<Goal> loadedGoals = new List<Goal>();
         string[] goalStrings = System.IO.File.ReadAllLines(_fileName);
+        int index = 0;
         foreach (string line in goalStrings)
         {
-            loadedGoals.Add(GetStringData(line));
+            if (index != 0)
+            {
+                loadedGoals.Add(GetStringData(line));
+            }
+
         }
         return loadedGoals;
     }
