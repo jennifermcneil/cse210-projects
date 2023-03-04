@@ -112,9 +112,6 @@ public class EternalQuest
                 goalTarget = Convert.ToInt32(Console.ReadLine());
                 Console.Write("What is the bonus for completing the goal?\n");
                 goalBonus = Convert.ToInt32(Console.ReadLine());
-                // How many times does this goal need to be done every day?
-                int goalFrequency = Convert.ToInt32(Console.ReadLine());
-                // pass the target times into constructor
                 Checklist checklist = new Checklist(goalName, goalDesc, goalPoints, goalTarget, goalBonus, 0);
                 userGoals.Add(checklist);
                 break;
@@ -134,11 +131,11 @@ public class EternalQuest
 
     public void DisplayIncompleteGoals()
     {
-        Console.Clear();
         int counter = 1;
         foreach (Goal goal in userGoals)
         {
-            if (goal.IsComplete())
+
+            if (!goal.IsComplete())
             {
                 Console.WriteLine($"{counter}. {goal.GetgoalInfo()[0]}");
                 counter++;

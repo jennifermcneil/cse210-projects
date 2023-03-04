@@ -22,7 +22,7 @@ public class Checklist : Goal
     public override int RecordEvent()
     {
 
-        Console.WriteLine($"How many timed did you complete {_name}?");
+        Console.WriteLine($"How many times did you complete {_name}?");
         int completed = int.Parse(Console.ReadLine());
         _timesCompleted += completed;
 
@@ -31,7 +31,7 @@ public class Checklist : Goal
         {
             // add points to total points
             _pointsAwarded += _bonus;
-            Console.WriteLine($"Congratulations! You completed {_name} and earned {_pointsAwarded * _timesCompleted + _bonus} points.");
+            Console.WriteLine($"Congratulations! You completed {_name} and earned {_pointsAwarded * _timesCompleted} points.");
             _completed = true;
         }
         else

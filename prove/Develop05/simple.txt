@@ -1,2 +1,2 @@
 0
-Simple:prayer,say prayer today,10,False
+Checklist:clean room,tidy,100,500,7,0,False

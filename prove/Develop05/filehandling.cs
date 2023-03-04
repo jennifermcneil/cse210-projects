@@ -15,14 +15,11 @@ public class Filehandling
             {
                 loadedGoals.Add(GetStringData(line));
             }
+            index++;
 
         }
         return loadedGoals;
     }
-    //0
-    // Simple:Give a talk,Speak in Sacrament meeting when asked,100,false
-    // Eternal:Study the scriptures,Study for at least 10 minutes,50
-    // Checklist:Attend the temple,Attend and perform any ordinance,50,500,3,0
     public void SaveGoals(List<Goal> userGoals, int totalPoints)
     {
         List<string> goalStrings = new List<string>();
@@ -62,26 +59,31 @@ public class Filehandling
         string name = parts[0];
         string description = parts[1];
         int points = int.Parse(parts[2]);
-        int bonus = int.Parse(parts[3]);
-        int target = int.Parse(parts[4]);
-        int timesCompleted = int.Parse(parts[5]);
-        bool isComplete = bool.Parse(parts[6]);
 
         if (goalType == "Simple")
         {
-            string IsComplete = parts[3];
+            bool isComplete = bool.Parse(parts[3]);
             Simple simple = new Simple(name, description, points, isComplete);
             return simple;
 
         }
         else if (goalType == "EternalGoal")
         {
+            int bonus = int.Parse(parts[3]);
+            int target = int.Parse(parts[4]);
+            int timesCompleted = int.Parse(parts[5]);
+            bool isComplete = bool.Parse(parts[6]);
             Eternal eternal = new Eternal(name, description, points, bonus, target, timesCompleted, isComplete);
             return eternal;
         }
 
         else
         {
+
+            int bonus = int.Parse(parts[3]);
+            int target = int.Parse(parts[4]);
+            int timesCompleted = int.Parse(parts[5]);
+            bool isComplete = bool.Parse(parts[6]);
             Checklist checklist = new Checklist(name, description, points, bonus, target, timesCompleted, isComplete);
             return checklist;
         }
