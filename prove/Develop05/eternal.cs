@@ -20,23 +20,27 @@ public class Eternal : Goal
     }
     public override int RecordEvent()
     {
+        int pointsAwarded = _pointsAwarded;
         Console.WriteLine($"How many timed did you complete {_name}?");
         int completed = int.Parse(Console.ReadLine());
         _timesCompleted += completed;
 
         // if they met the target amount award bonus other wise award points based off times completed
-        if (_timesCompleted % _targetCompleted == 0)
+        if (_timesCompleted % _targetCompleted)
         {
             // add points to total points
-            _pointsAwarded += _bonus;
-            Console.WriteLine($"Congratulations! You earned {_pointsAwarded * _timesCompleted + _bonus} points for completing {_name} {_targetCompleted} times.");
+            pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
+            Console.WriteLine($"Congratulations! You have completed {_name} and earned {pointsAwarded} points.");
+
+            _timesCompleted = _timesCompleted - _targetCompleted;
         }
         else
         {
-            Console.WriteLine($"You completed {_name} {completed} times and earned {_pointsAwarded * completed} points.");
+            Console.WriteLine($"You have completed {_name} {_timesCompleted} times total and earned {_pointsAwarded * _timesCompleted} points total.");
+            pointsAwarded = pointsAwarded * completed;
 
         }
-        return _pointsAwarded * completed;
+        return pointsAwarded;
     }
     public override int GetBonus()
     {

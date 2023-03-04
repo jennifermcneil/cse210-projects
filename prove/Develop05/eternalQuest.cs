@@ -124,10 +124,27 @@ public class EternalQuest
         for (int i = 0; i < userGoals.Count(); i++)
         {
             List<string> goalString = userGoals[i].GetgoalInfo();
-            Console.WriteLine($"{i + 1}. [{userGoals[i].GetIsComplete()}] {goalString[0]} ({goalString[1]})");
+            string type = userGoals[i].GetType().ToString();
+            if (type == "Simple")
+            {
+                Console.WriteLine($"{i + 1}. [{userGoals[i].GetIsComplete()}] {goalString[0]} ({goalString[1]})");
+            }
+            else if (type == "Eternal")
+            {
+                int times = userGoals[i].GetTimesCompleted();
+                int target = userGoals[i].GetTargetCompleted();
+                Console.WriteLine($"{i + 1}.     {goalString[0]} ({goalString[1]}) -- Currently completed: {times}/{target}");
+            }
+            else
+            {
+                int times = userGoals[i].GetTimesCompleted();
+                int target = userGoals[i].GetTargetCompleted();
+                Console.WriteLine($"{i + 1}. [{userGoals[i].GetIsComplete()}] {goalString[0]} ({goalString[1]}) -- Currently completed: {times}/{target}");
+            }
         }
 
     }
+
 
     public void DisplayIncompleteGoals()
     {

@@ -14,6 +14,7 @@ public class Checklist : Goal
     public Checklist(string name, string description, int points, int bonus, int target, int timesCompleted, bool isComplete) : base(name, description, points)
     {
 
+        _timesCompleted = target;
         _timesCompleted = timesCompleted;
         _bonus = bonus;
 
@@ -21,7 +22,7 @@ public class Checklist : Goal
 
     public override int RecordEvent()
     {
-
+        int pointsAwarded = _pointsAwarded;
         Console.WriteLine($"How many times did you complete {_name}?");
         int completed = int.Parse(Console.ReadLine());
         _timesCompleted += completed;
@@ -30,17 +31,18 @@ public class Checklist : Goal
         if (_timesCompleted >= _targetCompleted)
         {
             // add points to total points
-            _pointsAwarded += _bonus;
+            _pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
             Console.WriteLine($"Congratulations! You completed {_name} and earned {_pointsAwarded * _timesCompleted} points.");
             _completed = true;
         }
         else
         {
-            Console.WriteLine($"You completed {_name} {_timesCompleted} times and earned {_pointsAwarded * _timesCompleted} points.");
+            Console.WriteLine($"You have completed {_name} {_timesCompleted} times total and earned {pointsAwarded * _timesCompleted} points.");
+            pointsAwarded = pointsAwarded * completed;
 
         }
 
-        return _pointsAwarded * completed;
+        return pointsAwarded;
     }
     public override int GetBonus()
     {
