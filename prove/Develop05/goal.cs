@@ -6,6 +6,7 @@ public class Goal
     protected int _pointsAwarded;
     protected bool _completed;
 
+
     public Goal(string name, string description, int points)
     {
         _name = name;
@@ -24,16 +25,6 @@ public class Goal
         return _completed;
     }
 
-    public string GetName()
-    {
-        return _name;
-    }
-
-    public string GetDescription()
-    {
-        return _description;
-    }
-
     public char GetIsComplete()
     {
         if (_completed)
@@ -41,6 +32,23 @@ public class Goal
         else
             return ' ';
     }
+    public virtual int GetBonus()
+    {
+        return 0;
 
-    public virtual string GetTimesCompleted() { return null; }
+    }
+    public virtual int GetTargetCompleted()
+    {
+        return 0;
+    }
+
+    public virtual int GetTimesCompleted()
+    {
+        return 0;
+    }
+
+    public List<string> GetgoalInfo()
+    {
+        return new List<string>() { _name, _description, _pointsAwarded.ToString() };
+    }
 }

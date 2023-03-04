@@ -1,11 +1,9 @@
 using System;
 public class EternalQuest
 {
-
     private int _totalPoints;
     private string _userName;
     List<Goal> userGoals = new List<Goal>();
-    Filehandling fileSave = new Filehandling();
     private DateTime _date;
 
     public EternalQuest(string userName)
@@ -34,7 +32,7 @@ public class EternalQuest
                 case "3":
                     Console.WriteLine("What is the file name for your goal file?");
                     Filehandling fileSave = new Filehandling(Console.ReadLine());
-                    fileSave.SaveGoals(userGoals);
+                    fileSave.SaveGoals(userGoals, _totalPoints);
                     break;
                 case "4":
                     Console.WriteLine("What is the file name for your goal file?");
@@ -84,8 +82,7 @@ public class EternalQuest
                 goalDesc = Console.ReadLine();
                 Console.Write("What is the amount of points associated with this goal?\n");
                 goalPoints = Convert.ToInt32(Console.ReadLine());
-                string IsComplete = "False";
-                Simple simple = new Simple(goalName, goalDesc, goalPoints, IsComplete);
+                Simple simple = new Simple(goalName, goalDesc, goalPoints);
                 userGoals.Add(simple);
                 break;
 
@@ -96,7 +93,11 @@ public class EternalQuest
                 goalDesc = Console.ReadLine();
                 Console.Write("What is the amount of points associated with this goal?\n");
                 goalPoints = Convert.ToInt32(Console.ReadLine());
-                Eternal eternal = new Eternal(goalName, goalDesc, goalPoints);
+                Console.Write("How many times does this goal need to be accomplished for a bonus?\n");
+                int goalTarget = Convert.ToInt32(Console.ReadLine());
+                Console.Write("What is the bonus for accomplishing it that many times?\n");
+                int goalBonus = Convert.ToInt32(Console.ReadLine());
+                Eternal eternal = new Eternal(goalName, goalDesc, goalPoints, goalBonus, goalTarget);
                 userGoals.Add(eternal);
                 break;
 
@@ -107,14 +108,14 @@ public class EternalQuest
                 goalDesc = Console.ReadLine();
                 Console.Write("What is the amount of points associated with this goal?\n");
                 goalPoints = Convert.ToInt32(Console.ReadLine());
-                Console.Write("How many times does this goal need to be accomplished for a bonus?\n");
-                int goalTarget = Convert.ToInt32(Console.ReadLine());
-                Console.Write("What is the bonus for accomplishing it that many times?\n");
-                int goalBonus = Convert.ToInt32(Console.ReadLine());
+                Console.Write("How many times does this goal need to be accomplished for the goal to be completed?\n");
+                goalTarget = Convert.ToInt32(Console.ReadLine());
+                Console.Write("What is the bonus for completing the goal?\n");
+                goalBonus = Convert.ToInt32(Console.ReadLine());
                 // How many times does this goal need to be done every day?
                 int goalFrequency = Convert.ToInt32(Console.ReadLine());
                 // pass the target times into constructor
-                Checklist checklist = new Checklist(goalName, goalDesc, goalPoints, goalTarget, goalBonus, goalFrequency);
+                Checklist checklist = new Checklist(goalName, goalDesc, goalPoints, goalTarget, goalBonus, 0);
                 userGoals.Add(checklist);
                 break;
         }
@@ -125,7 +126,8 @@ public class EternalQuest
         Console.Clear();
         for (int i = 0; i < userGoals.Count(); i++)
         {
-            Console.WriteLine($"{i + 1}. [{userGoals[i].GetIsComplete()}] {userGoals[i].GetName()} ({userGoals[i].GetDescription()})");
+            List<string> goalString = userGoals[i].GetgoalInfo();
+            Console.WriteLine($"{i + 1}. [{userGoals[i].GetIsComplete()}] {goalString[0]} ({goalString[1]})");
         }
 
     }
@@ -138,7 +140,7 @@ public class EternalQuest
         {
             if (goal.IsComplete())
             {
-                Console.WriteLine($"{counter}. {goal.GetName()}");
+                Console.WriteLine($"{counter}. {goal.GetgoalInfo()[0]}");
                 counter++;
             }
         }
