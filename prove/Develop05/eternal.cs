@@ -26,7 +26,7 @@ public class Eternal : Goal
         _timesCompleted += completed;
 
         // if they met the target amount award bonus other wise award points based off times completed
-        if (_timesCompleted % _targetCompleted)
+        if (_timesCompleted >= _targetCompleted)
         {
             // add points to total points
             pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
@@ -36,7 +36,7 @@ public class Eternal : Goal
         }
         else
         {
-            Console.WriteLine($"You have completed {_name} {_timesCompleted} times total and earned {_pointsAwarded * _timesCompleted} points total.");
+            Console.WriteLine($"You have completed {_name} {_timesCompleted} times total and earned {pointsAwarded * _timesCompleted} points total.");
             pointsAwarded = pointsAwarded * completed;
 
         }

@@ -31,8 +31,8 @@ public class Checklist : Goal
         if (_timesCompleted >= _targetCompleted)
         {
             // add points to total points
-            _pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
-            Console.WriteLine($"Congratulations! You completed {_name} and earned {_pointsAwarded * _timesCompleted} points.");
+            pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
+            Console.WriteLine($"Congratulations! You have completed {_name} and earned {pointsAwarded} points.");
             _completed = true;
         }
         else
