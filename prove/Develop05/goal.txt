@@ -1,0 +1,4 @@
+0
+Simple:do the laundry,wash, dry, and put away laundry,100,False
+Eternal:Prayer,Say prayers daily,10,100,7,0
+Checklist:Clean room,Pick up room and straighten it,50,100,4,0,False
