@@ -11,10 +11,11 @@ public class Eternal : Goal
         _bonus = bonus;
 
     }
-    public Eternal(string name, string description, int points, int bonus, int target, int timesCompleted, bool isComplete) : base(name, description, points)
+    public Eternal(string name, string description, int points, int bonus, int target, int timesCompleted) : base(name, description, points)
     {
 
         _timesCompleted = timesCompleted;
+        _targetCompleted = target;
         _bonus = bonus;
 
     }
@@ -30,14 +31,13 @@ public class Eternal : Goal
         {
             // add points to total points
             pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
-            Console.WriteLine($"Congratulations! You have completed {_name} and earned {pointsAwarded} points.");
-
-            _timesCompleted = _timesCompleted - _targetCompleted;
+            Console.WriteLine($"Congratulations! You have completed {_name} {_timesCompleted} times total and earned {pointsAwarded} points total.");
         }
         else
         {
-            Console.WriteLine($"You have completed {_name} {_timesCompleted} times total and earned {pointsAwarded * _timesCompleted} points total.");
             pointsAwarded = pointsAwarded * completed;
+            Console.WriteLine($"You have completed {_name} and earned {pointsAwarded} points.");
+
 
         }
         return pointsAwarded;

@@ -35,15 +35,15 @@ public class Filehandling
 
             if (type == "Simple")
             {
-                goalStrings.Add($"{type}:{goalInfo[0]},{goalInfo[1]},{goalInfo[2]},{goal.IsComplete()}");
+                goalStrings.Add($"{type}:{goalInfo[0]}|{goalInfo[1]}|{goalInfo[2]}|{goal.IsComplete()}");
             }
             else if (type == "Eternal")
             {
-                goalStrings.Add($"{type}:{goalInfo[0]},{goalInfo[1]},{goalInfo[2]},{goal.GetBonus()},{goal.GetTargetCompleted()},{goal.GetTimesCompleted()}");
+                goalStrings.Add($"{type}:{goalInfo[0]}|{goalInfo[1]}|{goalInfo[2]}|{goal.GetBonus()}|{goal.GetTargetCompleted()}|{goal.GetTimesCompleted()}");
             }
             else
             {
-                goalStrings.Add($"{type}:{goalInfo[0]},{goalInfo[1]},{goalInfo[2]},{goal.GetBonus()},{goal.GetTargetCompleted()},{goal.GetTimesCompleted()},{goal.IsComplete()}");
+                goalStrings.Add($"{type}:{goalInfo[0]}|{goalInfo[1]}|{goalInfo[2]}|{goal.GetBonus()}|{goal.GetTargetCompleted()}|{goal.GetTimesCompleted()}|{goal.IsComplete()}");
             }
             index++;
         }
@@ -55,7 +55,7 @@ public class Filehandling
         string[] parts = goal.Split(":");
         string goalType = parts[0];
 
-        parts = parts[1].Split(",");
+        parts = parts[1].Split("|");
         string name = parts[0];
         string description = parts[1];
         int points = int.Parse(parts[2]);
@@ -67,13 +67,12 @@ public class Filehandling
             return simple;
 
         }
-        else if (goalType == "EternalGoal")
+        else if (goalType == "Eternal")
         {
             int bonus = int.Parse(parts[3]);
             int target = int.Parse(parts[4]);
             int timesCompleted = int.Parse(parts[5]);
-            bool isComplete = bool.Parse(parts[6]);
-            Eternal eternal = new Eternal(name, description, points, bonus, target, timesCompleted, isComplete);
+            Eternal eternal = new Eternal(name, description, points, bonus, target, timesCompleted);
             return eternal;
         }
 

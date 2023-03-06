@@ -14,7 +14,7 @@ public class Checklist : Goal
     public Checklist(string name, string description, int points, int bonus, int target, int timesCompleted, bool isComplete) : base(name, description, points)
     {
 
-        _timesCompleted = target;
+        _targetCompleted = target;
         _timesCompleted = timesCompleted;
         _bonus = bonus;
 

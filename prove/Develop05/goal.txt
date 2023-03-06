@@ -1,4 +1,4 @@
 0
-Simple:do the laundry wash dry and put away laundry,100,False
-Eternal:Prayer,Say prayers daily,10,100,7,0
-Checklist:Clean room,Pick up room and straighten it,50,100,4,0,False
+Simple:dust|dust room|10|False
+Eternal:say prayers|say prayers every day|100|500|7|0
+Checklist:clean room|vacumm dust straighten|100|500|5|0|False

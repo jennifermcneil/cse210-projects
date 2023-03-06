@@ -133,7 +133,7 @@ public class EternalQuest
             {
                 int times = userGoals[i].GetTimesCompleted();
                 int target = userGoals[i].GetTargetCompleted();
-                Console.WriteLine($"{i + 1}.     {goalString[0]} ({goalString[1]}) -- Currently completed: {times}/{target}");
+                Console.WriteLine($"{i + 1}.     {goalString[0]} ({goalString[1]}) -- Currently completed: {times}");
             }
             else
             {
