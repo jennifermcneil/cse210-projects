@@ -22,7 +22,7 @@ public class Eternal : Goal
     public override int RecordEvent()
     {
         int pointsAwarded = _pointsAwarded;
-        Console.WriteLine($"How many timed did you complete {_name}?");
+        Console.WriteLine($"How many timed did you accomplish {_name}?");
         int completed = int.Parse(Console.ReadLine());
         _timesCompleted += completed;
 
@@ -31,12 +31,12 @@ public class Eternal : Goal
         {
             // add points to total points
             pointsAwarded = (pointsAwarded * _timesCompleted) + _bonus;
-            Console.WriteLine($"Congratulations! You have completed {_name} {_timesCompleted} times total and earned {pointsAwarded} points total.");
+            Console.WriteLine($"Congratulations! You have accomplished {_name} {_timesCompleted} times total and earned {pointsAwarded} points.");
         }
         else
         {
             pointsAwarded = pointsAwarded * completed;
-            Console.WriteLine($"You have completed {_name} and earned {pointsAwarded} points.");
+            Console.WriteLine($"You have accomplished {_name} and earned {pointsAwarded} points.");
 
 
         }
