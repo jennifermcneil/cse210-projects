@@ -16,7 +16,7 @@ public class EternalQuest
         bool Quit = false;
         while (Quit == false)
         {
-            Console.WriteLine($"\nYou have {_totalPoints} points!\n");
+            Console.WriteLine($"\nYou have {_totalPoints} total points!\n");
             Console.WriteLine("Welcome select from \nMenu Options: \n 1. Create New Goal \n 2. List Goals \n 3. Save Goals \n 4. Load Goals \n 5. Record Event \n 6. Quit \nSelect a choice from the menu:");
             string userInput = Console.ReadLine();
 
@@ -45,7 +45,7 @@ public class EternalQuest
                     Console.WriteLine("What goal did you accomplish?");
                     int userChoice = int.Parse(Console.ReadLine());
                     _totalPoints += userGoals[userChoice - 1].RecordEvent();
-                    Console.WriteLine($"You now have {_totalPoints} points!");
+                    Console.WriteLine($"You now have {_totalPoints} total points!");
                     break;
                 case "6":
                     Quit = true;
