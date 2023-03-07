@@ -41,7 +41,7 @@ public class EternalQuest
                     break;
                 case "5":
                     Console.WriteLine("The goals are: ");
-                    DisplayIncompleteGoals();
+                    DisplayAllGoals();
                     Console.WriteLine("What goal did you accomplish?");
                     int userChoice = int.Parse(Console.ReadLine());
                     _totalPoints += userGoals[userChoice - 1].RecordEvent();
@@ -155,8 +155,10 @@ public class EternalQuest
             if (!goal.IsComplete())
             {
                 Console.WriteLine($"{counter}. {goal.GetgoalInfo()[0]}");
-                counter++;
+
             }
+            counter++;
+
         }
     }
 }
