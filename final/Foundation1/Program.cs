@@ -18,7 +18,7 @@ class Program
 
             video.Write("Doug", "I love your video");
             video.Write("Susan", "Nice Work!");
-            video.Write("Laurie", "How'd you record that?");
+            video.Write("Laurie", "How'd you record that?\n");
 
             video.DisplayVideo();
         }

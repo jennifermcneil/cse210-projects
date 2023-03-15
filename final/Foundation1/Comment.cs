@@ -9,11 +9,7 @@ public class Comment
         _text = text;
 
     }
-    public void UserWritesInput()
-    {
-        _userInput = Console.ReadLine();
-    }
-    public void _printEntry()
+    public void _printComment()
     {
         Console.WriteLine($"{_commenter}: \n{_text} ");
     }
