@@ -24,10 +24,16 @@ public class Video
             comment._printComment();
         }
     }
+    public int CommentCount()
+    {
+        return _commentList.Count();
+    }
     public void DisplayVideo()
     {
         Console.WriteLine($"({_title}) by: {_author}, {_length} sec.");
+        Console.WriteLine($"Number of Comments: {CommentCount()}");
         Console.WriteLine("Comments: ");
+
         DisplayComments();
     }
 }

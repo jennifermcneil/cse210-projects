@@ -18,33 +18,31 @@ class Program
         Product product3 = new Product("Spoonful of Sugar", "JAM789", 5.99, 1);
 
         //create some orders
-        Order order1 = new Order(customer1);
-        order1.AddProduct(product1);
-        order1.AddProduct(product2);
+        List<Product> order1Products = new List<Product> { product1, product2 };
+        Order order1 = new Order(order1Products, customer1);
 
-        Order order2 = new Order(customer2);
-        order2.AddProduct(product2);
-        order2.AddProduct(product3);
+        List<Product> order2Products = new List<Product> { product2, product3 };
+        Order order2 = new Order(order2Products, customer2);
 
 
         //Display packing and shipping labels and total cost for each order
 
         Console.WriteLine("Order 1:");
-        Console.WriteLine("PackingLabel:");
+        Console.WriteLine("Packing Label:");
         Console.WriteLine(order1.GetPackingLabel());
-        Console.WriteLine("ShippingLabel:");
+        Console.WriteLine("Shipping Label:");
         Console.WriteLine(order1.GetShippingLabel());
         Console.WriteLine();
-        Console.WriteLine($"Total Cost: ${order1.ComputeCost()}\n");
+        Console.WriteLine($"Total Cost: ${order1.CalculateTotalCost()}\n");
 
 
         Console.WriteLine("Order 2:");
-        Console.WriteLine("PackingLabel:");
+        Console.WriteLine("Packing Label:");
         Console.WriteLine(order2.GetPackingLabel());
-        Console.WriteLine("ShippingLabel:");
+        Console.WriteLine("Shipping Label:");
         Console.WriteLine(order2.GetShippingLabel());
         Console.WriteLine();
-        Console.WriteLine($"Total Cost: ${order2.ComputeCost()}\n");
+        Console.WriteLine($"Total Cost: ${order2.CalculateTotalCost()}\n");
 
     }
 }

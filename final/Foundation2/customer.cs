@@ -8,19 +8,20 @@ public class Customer
         _name = name;
         _address = address;
     }
-    public bool ReturnLocation()
+    public bool IsInUSA()
     {
-        return _address.ReturnLocation();
+        return _address.IsInUSA();
+    }
+
+    public string GetName()
+    {
+        return _name;
     }
 
     // getter for the address
     public Address GetAddress()
     {
         return _address;
-    }
-    public string GetName()
-    {
-        return _name;
     }
 
 }

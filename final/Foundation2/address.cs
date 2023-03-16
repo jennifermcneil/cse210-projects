@@ -15,12 +15,13 @@ public class Address
         _addressText = ($"{street}\n{city}, {stateProv}\n{country}");
     }
 
-    public bool ReturnLocation()
+    public bool IsInUSA()
     {
-        if (_country == "USA")
-            return true;
-        else
-            return false;
+        return _country == "USA";
+        //     if (_country == "USA")
+        //         return true;
+        //     else
+        //         return false;
     }
 
     public string GetAddressText()

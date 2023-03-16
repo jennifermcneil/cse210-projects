@@ -4,8 +4,9 @@ public class Order
     private Customer _customer;
     private double _cost;
 
-    public Order(Customer customer)
+    public Order(List<Product> productList, Customer customer)
     {
+        _productList = productList;
         _customer = customer;
     }
 
@@ -23,19 +24,20 @@ public class Order
         _productList.Add(product);
     }
 
-    public void ComputeCost()
+    public double CalculateTotalCost()
     {
         double cost = 0;
         foreach (Product product in _productList)
         {
-            cost += product.ComputePrice();
+            cost += product.ComputeTotalPrice();
         }
-        if (_customer.ReturnLocation())
+        if (_customer.IsInUSA())
             cost += 5;
         else
             cost += 35;
 
         _cost = cost;
+        return Math.Round(cost, 2);
     }
 
     public string GetPackingLabel()
@@ -43,7 +45,7 @@ public class Order
         string label = "";
         foreach (Product product in _productList)
         {
-            label += $"{product.GetName} - {product.GetProductID}\n";
+            label += $"{product.GetName()} - {product.GetProductID()}\n";
         }
         return label;
     }
