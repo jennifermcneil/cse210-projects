@@ -34,3 +34,4 @@ namespace FitnessApp
             return $"{_date.ToShortDateString()} ({_minutes} min)";
         }
     }
+}
