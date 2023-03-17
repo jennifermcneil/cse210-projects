@@ -23,14 +23,6 @@ public class Product
         return _productId;
     }
 
-    public double GetPrice()
-    {
-        return _price;
-    }
-    public int GetQuantity()
-    {
-        return _quantity;
-    }
     public double ComputeTotalPrice()
     {
         return _price * _quantity;

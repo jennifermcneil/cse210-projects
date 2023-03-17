@@ -9,9 +9,6 @@ public class OutdoorGatherings : Event
     {
         return $"Event Type:Outdoor Gathering\n{GetStandardDetails()}\nWeather Forcast: {_weather}";
     }
-    public override string GetShortDescription()
-    {
-        return $"Outdoor Gathering: {base.GetTitle()}\nDate: {base.GetDateTime()}";
-    }
+
 
 }

@@ -13,8 +13,4 @@ public class Lectures : Event
     {
         return $"Event Type: Lecture\n{GetStandardDetails()}\nSpeaker: {_speaker}\nCapacity: {_capacity}";
     }
-    public override string GetShortDescription()
-    {
-        return $"Lecture: {base.GetTitle()}\nDate: {base.GetDateTime()}";
-    }
 }

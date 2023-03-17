@@ -9,9 +9,6 @@ public class Receptions : Event
     {
         return $"Event Type: Reception\n{GetStandardDetails()}\nRSVP Email: {_rsvpEmail}";
     }
-    public override string GetShortDescription()
-    {
-        return $"Reception: {base.GetTitle()}\nDate: {base.GetDateTime()}";
-    }
+
 
 }

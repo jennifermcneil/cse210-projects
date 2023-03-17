@@ -27,7 +27,10 @@ public abstract class Event
     }
 
     public abstract string GetFullDetails();
-    public abstract string GetShortDescription();
+    public string GetShortDescription()
+    {
+        return $"{this.GetType()}: {_title} @ {GetDateTime()}";
+    }
 }
 
 //Regardless of the type, all events need to have an Event Title, Description, Date, Time, and Address.
