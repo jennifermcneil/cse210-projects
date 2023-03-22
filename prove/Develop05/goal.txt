@@ -1,4 +1,4 @@
-0
-Simple:dust|dust room|10|False
-Eternal:say prayers|say prayers every day|100|500|7|0
-Checklist:clean room|vacumm dust straighten|100|500|5|0|False
+140
+Simple|SimpleTest|DescriptionTest|10|True
+Eternal|EternalTest|DescriptionTest|10|3|3|100
+Checklist|ChecklistTest|DescriptionTest|10|False|3|100|0

@@ -4,15 +4,23 @@ public class Goal
     protected string _name;
     protected string _description;
     protected int _pointsAwarded;
-    protected bool _completed;
 
+
+    public Goal()
+    {
+        Console.Write("What is the name of your Goal?\n");
+        _name = Console.ReadLine();
+        Console.Write("Write a short description of your goal.\n");
+        _description = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal?\n");
+        _pointsAwarded = int.Parse(Console.ReadLine());
+    }
 
     public Goal(string name, string description, int points)
     {
         _name = name;
         _description = description;
         _pointsAwarded = points;
-        _completed = false;
     }
 
     public virtual int RecordEvent()
@@ -20,18 +28,16 @@ public class Goal
         return _pointsAwarded;
     }
 
-    public bool IsComplete()
+    public virtual bool IsComplete()
     {
-        return _completed;
+        return false;
     }
 
-    public char GetIsComplete()
+    public virtual char GetIsComplete()
     {
-        if (_completed)
-            return 'X';
-        else
-            return ' ';
+        return ' ';
     }
+
     public virtual int GetBonus()
     {
         return 0;
@@ -47,8 +53,13 @@ public class Goal
         return 0;
     }
 
-    public List<string> GetgoalInfo()
+    public virtual void SerializeGoal(string filename)
     {
-        return new List<string>() { _name, _description, _pointsAwarded.ToString() };
+
+    }
+
+    public virtual void GetGoalInfo(int i)
+    {
+
     }
 }

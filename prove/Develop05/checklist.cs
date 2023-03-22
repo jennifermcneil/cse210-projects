@@ -1,22 +1,24 @@
 using System;
 public class Checklist : Goal
 {
+    private bool _completed;
     private int _timesCompleted;
     private int _targetCompleted;
-    // bonus
     private int _bonus;
-    public Checklist(string name, string description, int points, int target, int bonus, int timesCompleted) : base(name, description, points)
+    public Checklist()
     {
-        _timesCompleted = 0;
-        _targetCompleted = target;
-        _bonus = bonus;
+        Console.Write("How many times does this goal need to be accomplished for the goal to be completed?\n");
+        _timesCompleted = Convert.ToInt32(Console.ReadLine());
+        Console.Write("What is the bonus for completing the goal?\n");
+        _targetCompleted = Convert.ToInt32(Console.ReadLine());
     }
-    public Checklist(string name, string description, int points, int bonus, int target, int timesCompleted, bool isComplete) : base(name, description, points)
+    public Checklist(string name, string description, int points, bool completed, int timesCompleted, int target, int bonus) : base(name, description, points)
     {
 
         _targetCompleted = target;
         _timesCompleted = timesCompleted;
         _bonus = bonus;
+        _completed = completed;
 
     }
 
@@ -57,6 +59,33 @@ public class Checklist : Goal
     public override int GetTimesCompleted()
     {
         return _timesCompleted;
+    }
+
+    public override bool IsComplete()
+    {
+        return _completed;
+    }
+
+    public override char GetIsComplete()
+    {
+        if (_completed)
+            return 'X';
+        else
+            return ' ';
+    }
+    public override void GetGoalInfo(int i)
+    {
+
+        Console.WriteLine($"{i + 1}) [{GetIsComplete()}] {_name} ({_description} {_pointsAwarded}) - Currently completed: {_timesCompleted}/{_targetCompleted}");
+    }
+
+    public override void SerializeGoal(string filename)
+    {
+        string goal = $"Checklist|{_name}|{_description}|{_pointsAwarded}|{_completed}|{_timesCompleted}|{_targetCompleted}|{_bonus}";
+        using (StreamWriter streamWriter = new StreamWriter(filename, true))
+        {
+            streamWriter.WriteLine(goal);
+        }
     }
 
 
