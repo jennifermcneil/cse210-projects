@@ -13,13 +13,17 @@ class Program
         youtubeVideos.Add(video1);
         youtubeVideos.Add(video2);
         youtubeVideos.Add(video3);
+        video1.Write("Doug", "I love your video");
+        video1.Write("Susan", "Nice Work!");
+        video1.Write("Laurie", "How'd you record that?\n");
+        video2.Write("Joy", "Sweet,video");
+        video2.Write("Jeremy", "Rad Robots");
+        video2.Write("Jonathan", "How'd you get that to work?\n");
+        video3.Write("Jay", "Nice work on your video");
+        video3.Write("Karen", "Crazy");
+        video3.Write("Kris", "Where is this filmed?\n");
         foreach (Video video in youtubeVideos)
         {
-
-            video.Write("Doug", "I love your video");
-            video.Write("Susan", "Nice Work!");
-            video.Write("Laurie", "How'd you record that?\n");
-
             video.DisplayVideo();
         }
 
