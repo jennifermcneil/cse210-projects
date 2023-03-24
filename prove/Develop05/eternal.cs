@@ -60,7 +60,7 @@ public class Eternal : Goal
     public override void GetGoalInfo(int i)
     {
 
-        Console.WriteLine($"{i + 1}) [{GetIsComplete()}] {_name} ({_description} {_pointsAwarded}) - Currently accomplished: {_timesCompleted} times.");
+        Console.WriteLine($"{i + 1}) {_name} ({_description} {_pointsAwarded}) - Currently accomplished: {_timesCompleted} times.");
     }
 
     public override void SerializeGoal(string filename)

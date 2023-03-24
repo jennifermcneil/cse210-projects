@@ -5,11 +5,10 @@ public class EternalQuest
     private int _totalPoints;
     private string _userName;
     List<Goal> userGoals = new List<Goal>();
-    private DateTime _date;
 
     public EternalQuest(string userName)
     {
-
+        _userName = userName;
     }
 
     public void Menu()
@@ -17,7 +16,7 @@ public class EternalQuest
         bool Quit = false;
         while (Quit == false)
         {
-            Console.WriteLine($"\nYou have {_totalPoints} total points!\n");
+            Console.WriteLine($"\n{_userName}, You have {_totalPoints} total points!\n");
             Console.WriteLine("Welcome select from \nMenu Options: \n 1. Create New Goal \n 2. List Goals \n 3. Save Goals \n 4. Load Goals \n 5. Record Event \n 6. Quit \nSelect a choice from the menu:");
             string userInput = Console.ReadLine();
 
@@ -37,14 +36,6 @@ public class EternalQuest
                     {
                         streamWriter.WriteLine(_totalPoints);
                     }
-
-                    foreach (Goal goal in userGoals)
-                    {
-                        goal.SerializeGoal(filename);
-                    }
-                    break;
-                case "4":
-                    userGoals.Clear();
                     Console.WriteLine("What is the file name for your goal file?");
                     filename = Console.ReadLine();
                     string[] lines = File.ReadAllLines(filename);
@@ -76,7 +67,7 @@ public class EternalQuest
                     Console.WriteLine("What goal did you accomplish?");
                     int userChoice = int.Parse(Console.ReadLine());
                     _totalPoints += userGoals[userChoice - 1].RecordEvent();
-                    Console.WriteLine($"You now have {_totalPoints} total points!");
+                    Console.WriteLine($"{_userName} You now have {_totalPoints} total points!");
                     break;
                 case "6":
                     Quit = true;
@@ -131,18 +122,15 @@ public class EternalQuest
 
     public void DisplayIncompleteGoals()
     {
+        Console.Clear();
         int counter = 1;
-        foreach (Goal goal in userGoals)
+        for (int i = 0; i < userGoals.Count(); i++)
         {
-
-            if (!goal.IsComplete())
+            if (!userGoals[i].IsComplete())
             {
-                Console.WriteLine($"{counter}. {goal.GetgoalInfo()[0]}");
-
-                // not sure why this isn't working
-
+                userGoals[i].GetGoalInfo(counter);
+                counter++;
             }
-            counter++;
 
         }
     }
