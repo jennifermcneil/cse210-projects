@@ -21,7 +21,9 @@ class Program
         video2.Write("Jonathan", "How'd you get that to work?\n");
         video3.Write("Jay", "Nice work on your video");
         video3.Write("Karen", "Crazy");
-        video3.Write("Kris", "Where is this filmed?\n");
+        video3.Write("Kris", "Where is this filmed?");
+        video3.Write("Doug", "I love your video\n");
+
         foreach (Video video in youtubeVideos)
         {
             video.DisplayVideo();
