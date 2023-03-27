@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class Activity
+public abstract class Activity
 {
     protected DateTime _date;
     protected int _durationInMinutes;
@@ -12,20 +12,11 @@ public class Activity
         _durationInMinutes = durationInMinutes;
     }
 
-    public virtual double GetDistance()
-    {
-        return 0;
-    }
+    public abstract double GetDistance();
 
-    public virtual double GetSpeed()
-    {
-        return 0;
-    }
+    public abstract double GetSpeed();
 
-    public virtual double GetPace()
-    {
-        return 0;
-    }
+    public abstract double GetPace();
 
     public virtual string GetSummary()
     {
