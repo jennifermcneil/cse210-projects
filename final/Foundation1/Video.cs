@@ -31,8 +31,8 @@ public class Video
     public void DisplayVideo()
     {
         Console.WriteLine($"--Video Information--");
-        Console.WriteLine($"({_title}) \nBy: {_author} \nLength: {_length} sec.");
-        Console.WriteLine($"Number of Comments: {CommentCount()}");
+        Console.WriteLine($"({_title}) \n By: {_author} \n Length: {_length} sec.");
+        Console.WriteLine($" Number of Comments: {CommentCount()}");
         Console.WriteLine("--Comments--");
 
         DisplayComments();
